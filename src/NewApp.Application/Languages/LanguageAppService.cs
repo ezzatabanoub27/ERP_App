@@ -49,7 +49,7 @@ namespace NewApp.Languages
         {
             var totalCount = await _languageRepository.CountAsync();
             var items = await _languageRepository.GetPagedListAsync(input.SkipCount, input.MaxResultCount,input.Sorting);
-
+             
             var result = _mapper.Map<List<Language>,List<LanguageDto>>(items);
 
             return new PagedResultDto<LanguageDto>(totalCount, result);

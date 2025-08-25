@@ -15,6 +15,7 @@ using Volo.Abp.OpenIddict.EntityFrameworkCore;
 using Volo.Abp.TenantManagement;
 using Volo.Abp.TenantManagement.EntityFrameworkCore;
 using NewApp.Languages;
+using NewApp.Generals;
 
 namespace NewApp.EntityFrameworkCore;
 
@@ -28,6 +29,8 @@ public class NewAppDbContext :
 {
 
     public DbSet<Language> Languages { get; set; }
+
+    public DbSet<GeneralSetting>GeneralSettings { get; set; }
     /* Add DbSet properties for your Aggregate Roots / Entities here. */
 
 
@@ -97,6 +100,13 @@ public class NewAppDbContext :
         {
             b.ToTable(NewAppConsts.DbTablePrefix + "Languages", NewAppConsts.DbSchema);
             b.ConfigureByConvention();
+        });
+
+        builder.Entity<GeneralSetting>(b =>
+        {
+            b.ToTable(NewAppConsts.DbTablePrefix + "GeneralSettings", NewAppConsts.DbSchema);
+            b.ConfigureByConvention();
+
         });
     }
 }

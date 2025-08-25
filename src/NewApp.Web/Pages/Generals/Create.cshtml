@@ -1,0 +1,42 @@
+﻿@page
+@using Microsoft.Extensions.Localization
+@model NewApp.Web.Pages.Generals.CreateModel
+@inject IStringLocalizer<NewApp.Localization.NewAppResource> L
+
+@section Scripts{
+
+    <abp-script src="/Pages/Generals/Create.js"></abp-script>
+
+}
+
+
+<form  id="generalSettingForm">
+    
+    <div  class="mb-3">
+        <label  class="form-label" >Page Title </label>
+        <input  type="text" name="pageTitle" class="form-control" required/>
+    </div>
+
+    <div class="mb-3">
+        <label  class="form-label">Slug</label>
+        <input  type="text" name="slug" class="form-control" required/>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Publish Date</label>
+        <input type="datetime-local" name="publishDate" class="form-control" required />
+    </div>
+
+    <div class="mb-3 form-check" >
+        <input type="checkbox" name="hideFromMenue" class="form-check-input" />
+        <label class="form-check-label">Hide From Menue </label>
+
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create</button>
+
+</form>
+
+
+
+

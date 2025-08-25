@@ -1,0 +1,60 @@
+{
+  "Culture": "en",
+  "Texts": {
+    "AppName": "NewApp",
+    "Menu:Home": "Home",
+    "LongWelcomeMessage": "Welcome to the application. This is a startup project based on the ABP framework. For more information visit",
+    "Welcome": "Welcome",
+    "Enum:FontType.Serif": "Serif",
+    "Enum:FontType.SansSerif": "Sans Serif",
+    "Enum:FontType.Monospace": "Monospace",
+
+    "Enum:CultureName.en": "AL",
+    "Enum:CultureName.ar": "DZ",
+    "Enum:CultureName.fr": "AT",
+
+    "Enum:FontType.Legacy": "Legacy",
+    "Enum:FontType.Cursive": "Cursive",
+    "Enum:FontType.Fantasy": "Fantasy",
+
+    "Enum:CultureName.AL": "Albania",
+    "Enum:CultureName.DZ": "Algeria",
+    "Enum:CultureName.AT": "Austria",
+    "Enum:CultureName.EG": "Egypt",
+    "Enum:CultureName.CN": "China",
+    "Enum:CultureName.CA": "Canada",
+    "Enum:CultureName.FR": "France",
+    "Enum:CultureName.DE": "Germany",
+    "Enum:CultureName.IN": "India",
+    "Enum:CultureName.IT": "Italy",
+    "Enum:CultureName.JP": "Japan",
+    "Enum:CultureName.SA": "Saudi Arabia",
+    "Enum:CultureName.TR": "Turkey",
+    "Enum:CultureName.US": "United States",
+    "Culture": "Culture",
+    "Font": "Font",
+    "Title": "Title",
+    "IsDefault": "Is Default",
+    "Actions": "Actions",
+    "Save": "Save",
+    "Cancel": "Cancel",
+    "Delete": "Delete",
+    "AddNew": "Add New",
+    "Languages": "Languages",
+    "AreYouSureDelete": "Are you sure you want to delete this language?",
+    "Confirm": "Confirm",
+    "SuccessfullyDeleted": "Language deleted successfully.",
+    "FailedToDelete": "Failed to delete the language.",
+    "SavedSuccessfully": "Language saved successfully.",
+    "AllFieldsAreRequired": "All fields are required.",
+    "DeleteConfirmationMessage": "Do you really want to delete this item?",
+
+
+    "Yes": "Yes",
+    "No": "No"
+
+
+
+
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "id": "1a73e524-1797-4013-bb6b-c2d39fe13895",
+  "template": "app",
+  "versions": {
+    "AbpFramework": "9.3.1",
+    "AbpStudio": "1.2.1",
+    "TargetDotnetFramework": "net9.0"
+  },
+  "modules": {
+    "NewApp": {
+      "path": "NewApp.abpmdl",
+      "folder": "main"
+    }
+  },
+  "runProfiles": {
+    "Default": {
+      "path": "etc/abp-studio/run-profiles/Default.abprun.json"
+    }
+  },
+  "options": {
+    "httpRequests": {
+      "ignoredUrls": []
+    }
+  },
+  "creatingStudioConfiguration": {
+    "template": "app",
+    "createdAbpStudioVersion": "1.2.1",
+    "tiered": "false",
+    "runInstallLibs": "true",
+    "useLocalReferences": "false",
+    "multiTenancy": "true",
+    "includeTests": "true",
+    "kubernetesConfiguration": "false",
+    "uiFramework": "mvc",
+    "mobileFramework": "none",
+    "distributedEventBus": "none",
+    "databaseProvider": "ef",
+    "runDbMigrator": "true",
+    "databaseManagementSystem": "sqlserver",
+    "separateTenantSchema": "false",
+    "createInitialMigration": "true",
+    "theme": "leptonx-lite",
+    "themeStyle": "",
+    "themeMenuPlacement": "",
+    "publicWebsite": "false",
+    "socialLogin": "false",
+    "selectedLanguages": [
+      "English",
+      "English (United Kingdom)",
+      "Chinese (Simplified)",
+      "Spanish",
+      "Arabic",
+      "Hindi ",
+      "Portuguese (Brazil)",
+      "French",
+      "Russian",
+      "German (Germany)",
+      "Turkish",
+      "Italian",
+      "Czech",
+      "Hungarian",
+      "Romanian (Romania)",
+      "Swedish",
+      "Finnish",
+      "Slovak",
+      "Icelandic",
+      "Chinese (Traditional)"
+    ],
+    "defaultLanguage": "English",
+    "createCommand": "abp new NewApp -t app --ui-framework mvc --database-provider ef --database-management-system sqlserver --theme leptonx-lite --without-cms-kit --dont-run-bundling --no-social-logins -no-gdpr -no-openiddict-admin-ui -no-audit-logging -no-file-management -no-language-management -no-text-template-management"
+  },
+  "folders": {
+    "items": {
+      "main": {},
+      "modules": {}
+    }
+  }
+}

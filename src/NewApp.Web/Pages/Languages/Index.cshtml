@@ -1,0 +1,33 @@
+﻿@page
+@using Microsoft.Extensions.Localization
+@model NewApp.Web.Pages.Languages.IndexModel
+@inject IStringLocalizer<NewApp.Localization.NewAppResource> L
+
+@section Scripts {
+    <abp-script src="/Pages/Languages/Index.js" />
+}
+
+<abp-card>
+    <abp-card-header>
+        <h2>@L["Languages"]</h2>
+    </abp-card-header>
+
+    <abp-card-body>
+        <abp-table striped-rows="true" id="LanguagesTable" class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>@L["Title"]</th>
+                    <th>@L["Font"]</th>
+                    <th>@L["Culture"]</th>
+                    <th>@L["Is Default"]</th>
+                    <th>@L["Actions"]</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </abp-table>
+
+        <div class="mt-3">
+            <button class="btn btn-success" id="addNewRow">@L["Add New"]</button>
+        </div>
+    </abp-card-body>
+</abp-card>

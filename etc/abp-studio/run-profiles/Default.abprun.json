@@ -1,0 +1,18 @@
+﻿{
+  "applications": {
+    "NewApp.Web": {
+      "type": "dotnet-project",
+      "launchUrl": "https://localhost:44395",
+      "path": "../../../src/NewApp.Web/NewApp.Web.csproj",
+      "kubernetesService": ".*-web$",
+      "healthCheckEndpoint": "/health-status",
+      "healthUiEndpoint": "/health-ui",
+      "execution": {
+        "order": 2
+      }
+    }
+  },
+  "containers": {
+    "serviceName": "NewApp-Containers",
+  }
+}

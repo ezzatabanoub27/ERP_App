@@ -45,14 +45,14 @@ namespace NewApp.Generals
             return _mapper.Map<GeneralSetting,GeneralSettingDto>(generalSetting);
         }
 
-        public async Task<PagedResultDto<GeneralSettingDto>> GetGeneralSettingListAsync(PagedAndSortedResultRequestDto input)
+        public async Task<PagedResultDto<GeneralSettingDto>> GetAllGeneralSettingsAsync(PagedAndSortedResultRequestDto input)
         {
             var totalCount = await _generalSettingRepository.CountAsync();
-            var items = await _generalSettingRepository.GetPagedListAsync(input.MaxResultCount, input.SkipCount, input.Sorting);
+            var items = await _generalSettingRepository.GetPagedListAsync( input.SkipCount,input.MaxResultCount, input.Sorting);
 
             var result = _mapper.Map<List<GeneralSetting>, List<GeneralSettingDto>>(items);
 
-            return new PagedResultDto<GeneralSettingDto>(totalCount, result);
+            return new PagedResultDto<GeneralSettingDto>(totalCount,result);
         }
 
         public async Task<GeneralSettingDto> UpdateGeneralSettingAsync(CreateGeneralSettingDto input, Guid id)

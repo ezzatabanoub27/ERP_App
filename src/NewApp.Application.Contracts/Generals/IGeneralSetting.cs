@@ -12,7 +12,7 @@ namespace NewApp.Generals
     {
 
         Task <GeneralSettingDto> CreateGeneralSettingAsync(CreateGeneralSettingDto dto);
-        Task<PagedResultDto<GeneralSettingDto>> GetGeneralSettingListAsync(PagedAndSortedResultRequestDto input);
+        Task<PagedResultDto<GeneralSettingDto>> GetAllGeneralSettingsAsync(PagedAndSortedResultRequestDto input);
 
         Task DeleteGeneralSettingAsync(Guid id);
         Task<GeneralSettingDto> UpdateGeneralSettingAsync(CreateGeneralSettingDto input , Guid id);

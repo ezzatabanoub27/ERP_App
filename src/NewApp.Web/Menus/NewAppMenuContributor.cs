@@ -40,15 +40,30 @@ public class NewAppMenuContributor : IMenuContributor
     new ApplicationMenuItem(
         "NewApp",
         l["Language"],
-        icon: "fa fa-language"
-    ).AddItem(
-        new ApplicationMenuItem(
-            "NewApp.Languages",
-            l["Languages"],
-            url: "/Languages"
-        )
+        "/Languages",
+
+        icon: "fa fa-language",
+        order: 1
     )
+//AddItem(
+//new ApplicationMenuItem(
+//"NewApp.Languages",
+//l["Languages"],
+//url: "/Languages"
+//)
+//)
 );
+
+        context.Menu.AddItem(
+            new ApplicationMenuItem(
+                "NewApp",
+                l["General"],
+                 "/Generals/Create",
+                icon: "fa fa-Settings"
+                )
+            );
+
+
 
 
         //Administration

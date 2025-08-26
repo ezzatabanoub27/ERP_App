@@ -12,7 +12,7 @@
             hideFromMenue: form.find('[name="hideFromMenue"]').is(':checked')
         };
 
-        abp.ui.setBusy(form); // Show loading
+        abp.ui.setBusy(form); 
 
         abp.ajax({
             url: abp.appPath + 'api/app/general-setting/general-setting',
@@ -26,7 +26,7 @@
             console.error(error);
             abp.notify.error(l('FailedToCreate'));
         }).always(function () {
-            abp.ui.clearBusy(form); // Hide loading
+            abp.ui.clearBusy(form); 
         });
     });
 });

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using JetBrains.Annotations;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,22 +19,26 @@ namespace NewApp.Languages
     public class LanguageAppService : ApplicationService, ILanguageAppService
     {
         private readonly IRepository<Language,Guid> _languageRepository;
-        private readonly IMapper _mapper;
+        private readonly LanguageManager _languageManager;
 
-        public LanguageAppService (IRepository<Language,Guid> languageRepository,IMapper mapper)
+
+        public LanguageAppService (IRepository<Language,Guid> languageRepository,LanguageManager languageManager)
         {
             _languageRepository = languageRepository;
-            _mapper = mapper;
+            _languageManager = languageManager;
         }
 
         public async Task<LanguageDto> createLanguageAsync(CreateLanguageDto languageDto)
         {
-            var languages = _mapper.Map<CreateLanguageDto,Language>(languageDto);
+            //var languages = ObjectMapper.Map<CreateLanguageDto,Language>(languageDto);
 
-            var createdLanguage = await _languageRepository.InsertAsync(languages);
+            //var createdLanguage = await _languageRepository.InsertAsync(languages);
 
 
-            return _mapper.Map<Language,LanguageDto>(languages);
+            //return ObjectMapper.Map<Language,LanguageDto>(languages);
+
+            var language = await _languageManager.CretaeAsync(languageDto.Title, languageDto.Font, languageDto.Culture, languageDto.IsDefault);
+            return ObjectMapper.Map<Language,LanguageDto>(language);
 
         }
         [RemoteService]
@@ -42,15 +47,15 @@ namespace NewApp.Languages
         public async Task DeleteLanguageAsync(Guid languageId)
         {
 
-            await _languageRepository.DeleteAsync(languageId);
+            await _languageManager.DeleteAsync(languageId);
         }
         [RemoteService]
-        public async Task<PagedResultDto<LanguageDto>> GetAllLanguagesAsync(PagedAndSortedResultRequestDto input)
+        public async Task<PagedResultDto<LanguageDto>> GetAllLanguagesAsync([FromQuery]LanguageInput input)
         {
             var totalCount = await _languageRepository.CountAsync();
-            var items = await _languageRepository.GetPagedListAsync(input.SkipCount, input.MaxResultCount,input.Sorting);
-             
-            var result = _mapper.Map<List<Language>,List<LanguageDto>>(items);
+            var items = await _languageRepository.GetPagedListAsync(input.SkipCount, input.MaxResultCount, input.Sorting);
+
+            var result = ObjectMapper.Map<List<Language>,List<LanguageDto>>(items);
 
             return new PagedResultDto<LanguageDto>(totalCount, result);
 

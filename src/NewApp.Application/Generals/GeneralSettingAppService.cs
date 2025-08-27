@@ -10,25 +10,25 @@ using Volo.Abp.Domain.Repositories;
 
 namespace NewApp.Generals
 {
-    public class GeneralSettingAppService : ApplicationService, IGeneralSetting
+    public class GeneralSettingAppService : ApplicationService, IGeneralSettingAppService
     {
         private readonly IRepository<GeneralSetting,Guid> _generalSettingRepository;
+        private readonly IGeneralSettingRepository _generalSettingRepository1;
 
-        private readonly IMapper _mapper;
 
-        public GeneralSettingAppService(IRepository<GeneralSetting,Guid> generalSettingRepository , IMapper mapper)
+        public GeneralSettingAppService(IRepository<GeneralSetting,Guid> generalSettingRepository ,IGeneralSettingRepository generalSettingRepository1)
         {
             _generalSettingRepository = generalSettingRepository;
-            _mapper = mapper;
+            _generalSettingRepository1 = generalSettingRepository1;
         }
 
 
         public async Task<GeneralSettingDto> CreateGeneralSettingAsync(CreateGeneralSettingDto dto)
         {
 
-            var converted = _mapper.Map<CreateGeneralSettingDto ,GeneralSetting>(dto);
+            var converted = ObjectMapper.Map<CreateGeneralSettingDto ,GeneralSetting>(dto);
             var generalSetting = await _generalSettingRepository.InsertAsync(converted);
-            return _mapper.Map<GeneralSetting,GeneralSettingDto>(generalSetting);   
+            return ObjectMapper.Map<GeneralSetting,GeneralSettingDto>(generalSetting);   
 
         }
 
@@ -42,7 +42,7 @@ namespace NewApp.Generals
         {
 
             var generalSetting = await _generalSettingRepository.GetAsync(id);
-            return _mapper.Map<GeneralSetting,GeneralSettingDto>(generalSetting);
+            return ObjectMapper.Map<GeneralSetting,GeneralSettingDto>(generalSetting);
         }
 
         public async Task<PagedResultDto<GeneralSettingDto>> GetAllGeneralSettingsAsync(PagedAndSortedResultRequestDto input)
@@ -50,7 +50,7 @@ namespace NewApp.Generals
             var totalCount = await _generalSettingRepository.CountAsync();
             var items = await _generalSettingRepository.GetPagedListAsync( input.SkipCount,input.MaxResultCount, input.Sorting);
 
-            var result = _mapper.Map<List<GeneralSetting>, List<GeneralSettingDto>>(items);
+            var result = ObjectMapper.Map<List<GeneralSetting>, List<GeneralSettingDto>>(items);
 
             return new PagedResultDto<GeneralSettingDto>(totalCount,result);
         }
@@ -60,11 +60,11 @@ namespace NewApp.Generals
 
             var item = await _generalSettingRepository.GetAsync(id);
 
-            _mapper.Map(input,item);
+            ObjectMapper.Map(input,item);
 
             var updated = await _generalSettingRepository.UpdateAsync(item);
 
-            return _mapper.Map<GeneralSetting,GeneralSettingDto>(updated);
+            return ObjectMapper.Map<GeneralSetting,GeneralSettingDto>(updated);
 
         }
     }

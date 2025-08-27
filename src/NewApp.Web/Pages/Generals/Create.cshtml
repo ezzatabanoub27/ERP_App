@@ -1,42 +1,93 @@
 ﻿@page
-@using Microsoft.Extensions.Localization
 @model NewApp.Web.Pages.Generals.CreateModel
-@inject IStringLocalizer<NewApp.Localization.NewAppResource> L
-
-@section Scripts{
-
-    <abp-script src="/Pages/Generals/Create.js"></abp-script>
-
+@using Microsoft.Extensions.Localization
+@using Volo.Abp.AspNetCore.Mvc.UI.Layout
+@using NewApp.Localization
+@inject IStringLocalizer<NewAppResource> L
+@inject IPageLayout PageLayout
+@{
+    PageLayout.Content.Title = L["GeneralSetting"].Value;
 }
-
-
-<form  id="generalSettingForm">
-    
-    <div  class="mb-3">
-        <label  class="form-label" >Page Title </label>
-        <input  type="text" name="pageTitle" class="form-control" required/>
-    </div>
-
-    <div class="mb-3">
-        <label  class="form-label">Slug</label>
-        <input  type="text" name="slug" class="form-control" required/>
-    </div>
-
-    <div class="mb-3">
-        <label class="form-label">Publish Date</label>
-        <input type="datetime-local" name="publishDate" class="form-control" required />
-    </div>
-
-    <div class="mb-3 form-check" >
-        <input type="checkbox" name="hideFromMenue" class="form-check-input" />
-        <label class="form-check-label">Hide From Menue </label>
-
-    </div>
-
-    <button type="submit" class="btn btn-primary">Create</button>
-
-</form>
+<abp-card>
+    <abp-card-body>
+        <abp-tabs>
 
 
 
+            <abp-tab title="@L["PageSetting"]">
+                <form id="generalSettingForm">
+                    <abp-input asp-for="GeneralSetting.PageTitle"
+                               label="@L["PageTitle"]"
+                               required="true" />
 
+                    <abp-input asp-for="GeneralSetting.Slug"
+                               label="@L["Slug"]"
+                               required="true" />
+
+                    <abp-input asp-for="GeneralSetting.Content"
+                               label="@L["Content"]"
+                               type="textarea"
+                               required="true" />
+
+                    <abp-input asp-for="GeneralSetting.PublishDate"
+                               label="@L["PublishDate"]"
+                               type="datetime-local"
+                               required="true" />
+
+                    <abp-input asp-for="GeneralSetting.HideFromMenue"
+                               label="@L["HideFromMenue"]"
+                               type="checkbox" />
+
+                    <div class="mt-3">
+                        <abp-button type="submit" button-type="Primary">
+                            @L["Save"]
+                        </abp-button>
+                    </div>
+                </form>
+            </abp-tab>
+
+
+
+
+
+            <abp-tab title="@L["SEOSetting"]">
+                <form id="seoSettingForm">
+                    <abp-input asp-for="SeoSetting.MetaTitle"
+                               label="@L["MetaTitle"]"
+                               required="true" />
+
+                    <abp-input asp-for="SeoSetting.MetaDescription"
+                               label="@L["MetaDescription"]"
+                               type="textarea"
+                               required="true" />
+
+                    <abp-input asp-for="SeoSetting.MetaKeyWords"
+                               label="@L["MetaKeywords"]" />
+
+                    <abp-input asp-for="SeoSetting.MetaIndex"
+                               label="@L["MetaIndex"]"
+                               type="checkbox" />
+
+                    <abp-input asp-for="SeoSetting.MetaFollow"
+                               label="@L["MetaFollow"]"
+                               type="checkbox" />
+
+                    <abp-input asp-for="SeoSetting.MetaPriority"
+                               label="@L["MetaPriority"]"
+                               type="number" />
+
+                    <div class="mt-3">
+                        <abp-button type="submit" button-type="Primary">
+                            @L["Save"]
+                        </abp-button>
+                    </div>
+                </form>
+            </abp-tab>
+        </abp-tabs>
+    </abp-card-body>
+</abp-card>
+
+@section Scripts {
+    <script src="/Pages/Generals/Create.js" asp-append-version="true"></script>
+    <script src="/Pages/Generals/CreateSeo.js" asp-append-version="true"></script>
+}

@@ -8,7 +8,7 @@ using Volo.Abp.Application.Services;
 
 namespace NewApp.Generals
 {
-    public interface IGeneralSetting:IApplicationService
+    public interface IGeneralSettingAppService:IApplicationService
     {
 
         Task <GeneralSettingDto> CreateGeneralSettingAsync(CreateGeneralSettingDto dto);

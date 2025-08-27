@@ -16,6 +16,7 @@ using Volo.Abp.TenantManagement;
 using Volo.Abp.TenantManagement.EntityFrameworkCore;
 using NewApp.Languages;
 using NewApp.Generals;
+using NewApp.SEO;
 
 namespace NewApp.EntityFrameworkCore;
 
@@ -31,6 +32,8 @@ public class NewAppDbContext :
     public DbSet<Language> Languages { get; set; }
 
     public DbSet<GeneralSetting>GeneralSettings { get; set; }
+    public DbSet<SEOSetting>SEOSettings { get; set; }
+
     /* Add DbSet properties for your Aggregate Roots / Entities here. */
 
 
@@ -66,7 +69,7 @@ public class NewAppDbContext :
     public NewAppDbContext(DbContextOptions<NewAppDbContext> options)
         : base(options)
     {
-
+        
 
 
     }
@@ -87,6 +90,8 @@ public class NewAppDbContext :
         builder.ConfigureTenantManagement();
         builder.ConfigureBlobStoring();
 
+        builder.ApplyConfiguration(new GeneralSettingConfiguration());
+
         /* Configure your own tables/entities inside here */
 
         //builder.Entity<YourEntity>(b =>
@@ -96,17 +101,6 @@ public class NewAppDbContext :
         //    //...
         //});
 
-        builder.Entity<Language>(b =>
-        {
-            b.ToTable(NewAppConsts.DbTablePrefix + "Languages", NewAppConsts.DbSchema);
-            b.ConfigureByConvention();
-        });
 
-        builder.Entity<GeneralSetting>(b =>
-        {
-            b.ToTable(NewAppConsts.DbTablePrefix + "GeneralSettings", NewAppConsts.DbSchema);
-            b.ConfigureByConvention();
-
-        });
     }
 }

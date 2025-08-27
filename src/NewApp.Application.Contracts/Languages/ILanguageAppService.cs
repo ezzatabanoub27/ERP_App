@@ -11,7 +11,7 @@ namespace NewApp.Languages
     public interface ILanguageAppService:IApplicationService
     {
 
-        Task <PagedResultDto<LanguageDto>> GetAllLanguagesAsync(PagedAndSortedResultRequestDto input);
+        Task <PagedResultDto<LanguageDto>> GetAllLanguagesAsync(LanguageInput input);
 
         Task<LanguageDto> createLanguageAsync (CreateLanguageDto languageDto);
 

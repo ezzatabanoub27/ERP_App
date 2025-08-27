@@ -6,11 +6,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Volo.Abp.Domain.Entities.Auditing;
+using Volo.Abp.MultiTenancy;
 
 namespace NewApp.Languages
 {
-    public class Language :AuditedAggregateRoot<Guid>
+    public class Language :AuditedAggregateRoot<Guid>,IMultiTenant
     {
+        public Language(Guid id,string title , FontType font ,CultureName culture,bool isDefault ):base(id)
+        {
+            Title=title;
+            Font =font;
+            Culture = culture;
+            IsDefault=IsDefault;
+
+
+
+        }
+        public Language()
+        {
+
+        }
+
 
         [Required]
         [MaxLength(100)]
@@ -23,5 +39,6 @@ namespace NewApp.Languages
         [Required]
         public bool IsDefault { get; set; }
 
+        public Guid? TenantId { get; set; }
     }
 }

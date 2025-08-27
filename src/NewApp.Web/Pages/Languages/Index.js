@@ -143,15 +143,15 @@
         }
 
         abp.ajax({
-            url: abp.appPath + 'api/app/language/create-language',
+            url: abp.appPath + 'api/app/language',
             type: 'POST',
             data: JSON.stringify(newLanguage)
         }).done(function () {
-            abp.notify.success(l('SavedSuccessfully'));
+            abp.notify.success(l('Saved Successfully'));
             dataTable.ajax.reload();
             $('#newRow').remove();
         }).fail(function (e) {
-            abp.message.error(l("FailedToSave"));
+            abp.message.error(l("Failed To Save "));
             console.error(e);
         });
     });

@@ -20,7 +20,7 @@ namespace NewApp.Web.Pages.Languages
 
         public async Task OnGetAsync()
         {
-            var result = await _lnguageAppService.GetAllLanguagesAsync(new PagedAndSortedResultRequestDto
+            var result = await _lnguageAppService.GetAllLanguagesAsync(new LanguageInput
             {
                 MaxResultCount = 1000
             });

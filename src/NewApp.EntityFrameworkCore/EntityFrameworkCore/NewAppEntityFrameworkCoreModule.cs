@@ -14,6 +14,9 @@ using Volo.Abp.SettingManagement.EntityFrameworkCore;
 using Volo.Abp.BlobStoring.Database.EntityFrameworkCore;
 using Volo.Abp.TenantManagement.EntityFrameworkCore;
 using Volo.Abp.Studio;
+using NewApp.SEO;
+using NewApp.Languages;
+using NewApp.Generals;
 
 namespace NewApp.EntityFrameworkCore;
 
@@ -45,6 +48,9 @@ public class NewAppEntityFrameworkCoreModule : AbpModule
                 /* Remove "includeAllEntities: true" to create
                  * default repositories only for aggregate roots */
             options.AddDefaultRepositories(includeAllEntities: true);
+            options.AddRepository<SEOSetting,EfCoreSettingRepository>();
+            options.AddRepository<Language,EfCoreLanguageRepository>();
+            options.AddRepository<GeneralSetting,EfCoreGeneralSettingRepository>();
         });
 
         if (AbpStudioAnalyzeHelper.IsInAnalyzeMode)

@@ -1,16 +1,23 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using NewApp.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Volo.Abp.Domain.Repositories.EntityFrameworkCore;
+using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore.Modeling;
 
 namespace NewApp.Generals
 {
     public class GeneralSettingConfiguration : IEntityTypeConfiguration<GeneralSetting>
     {
+      
+
+       
+
         public void Configure(EntityTypeBuilder<GeneralSetting> builder)
         {
 

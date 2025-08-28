@@ -25,4 +25,8 @@
             $('#generalSettingForm')[0].reset();
         });
     });
+
+    $('#cancelGeneral').on('click', function () {
+        $('#generalSettingForm')[0].reset();
+    });
 });

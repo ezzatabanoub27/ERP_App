@@ -1,15 +1,20 @@
 ﻿@page
 @using Microsoft.Extensions.Localization
+@using Volo.Abp.AspNetCore.Mvc.UI.Layout
 @model NewApp.Web.Pages.Languages.IndexModel
 @inject IStringLocalizer<NewApp.Localization.NewAppResource> L
+@inject IPageLayout PageLayout
 
-@section Scripts {
-    <abp-script src="/Pages/Languages/Index.js" />
+@{
+    PageLayout.Content.Title = L["Langauge"].Value;
+
 }
+
+
+
 
 <abp-card>
     <abp-card-header>
-        <h2>@L["Languages"]</h2>
     </abp-card-header>
 
     <abp-card-body>
@@ -31,3 +36,7 @@
         </div>
     </abp-card-body>
 </abp-card>
+
+@section Scripts {
+    <abp-script src="/Pages/Languages/Index.js" />
+}

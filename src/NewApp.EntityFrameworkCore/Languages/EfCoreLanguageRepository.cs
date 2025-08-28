@@ -36,7 +36,7 @@ namespace NewApp.Languages
 
             if (!string.IsNullOrWhiteSpace(sorting))
             {
-                    query = query.OrderBy(x=>x.Title);  ////sorting throw ArgumentNullExption
+                    query = query.OrderBy(x=>x.Title); 
             }
             else
             {

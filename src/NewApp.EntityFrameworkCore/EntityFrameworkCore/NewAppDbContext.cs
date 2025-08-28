@@ -90,7 +90,8 @@ public class NewAppDbContext :
         builder.ConfigureTenantManagement();
         builder.ConfigureBlobStoring();
 
-        builder.ApplyConfiguration(new GeneralSettingConfiguration());
+        ModelBuilder modelBuilder = builder.ApplyConfiguration(new GeneralSettingConfiguration());
+
 
         /* Configure your own tables/entities inside here */
 

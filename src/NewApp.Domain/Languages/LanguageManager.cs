@@ -58,10 +58,10 @@ namespace NewApp.Languages
             {
                 throw new EntityNotFoundException(typeof(Language), id);
             }
-            if (language.IsDefault)
-            {
-                throw new BusinessException("Default LAnguage can not be deleted !");
-            }
+            //if (language.IsDefault)
+            //{
+            //    throw new BusinessException("Default LAnguage can not be deleted !");
+            //}
             await _languageRepository.DeleteAsync(language);
 
 

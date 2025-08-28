@@ -15,6 +15,8 @@
             metaPriority: parseInt($('#SeoSetting_MetaPriority').val()) || 0
         };
 
+
+
         abp.ajax({
             url: createUrl,
             type: 'POST',
@@ -24,6 +26,33 @@
             abp.notify.success(l('SuccessfullyCreated'));
 
             $('#seoSettingForm')[0].reset();
+            updatePriorityValue();
         });
+
+
     });
+
+
+
+    $('#cancelSeo').on('click', function () {
+        $('#seoSettingForm')[0].reset();
+        updatePriorityValue();
+    });
+
+
+    function updatePriorityValue() {
+        var slider = document.getElementById("SeoSetting_MetaPriority");
+        var output = document.getElementById("priorityValue");
+        if (slider && output) {
+            output.textContent = slider.value;
+        }
+    }
+
+    var slider = document.getElementById("SeoSetting_MetaPriority");
+    if (slider) {
+        slider.addEventListener("input", function () {
+            updatePriorityValue();
+        });
+        updatePriorityValue();
+    }
 });
